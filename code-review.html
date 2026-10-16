@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Code Review | Richard Loumiet</title>
+
+  <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+
+  <header>
+    <div class="header-content">
+      <h1>Informal Code Review</h1>
+      <p>CS 499 Computer Science Capstone</p>
+    </div>
+  </header>
+
+  <nav>
+    <ul>
+      <li><a href="index.html">Home</a></li>
+      <li><a href="code-review.html">Code Review</a></li>
+      <li>
+        <a href="software-engineering.html">
+          Software Design & Engineering
+        </a>
+      </li>
+      <li>
+        <a href="algorithms.html">
+          Algorithms & Data Structures
+        </a>
+      </li>
+      <li>
+        <a href="databases.html">
+          Databases
+        </a>
+      </li>
+    </ul>
+  </nav>
+
+  <main>
+
+    <section>
+      <h2>Travlr Getaways Code Review</h2>
+
+      <p>
+        Before completing the enhancements for my CS 499 capstone,
+        I performed a code review of the original Travlr Getaways
+        full-stack application. The purpose of the review was to
+        examine how the existing application worked, identify areas
+        that could be improved, and explain the enhancements I planned
+        to make in software engineering, algorithms and data
+        structures, and databases.
+      </p>
+
+      <p>
+        The review focused on the existing Angular administrative
+        interface, Express and REST API structure, MongoDB data models,
+        authentication system, trip-management functionality, and the
+        way information moved between the different layers of the
+        application.
+      </p>
+    </section>
+
+
+    <section>
+      <h2>Existing Functionality</h2>
+
+      <p>
+        The original Travlr Getaways application already included a
+        customer-facing website, an Angular administrative interface,
+        REST API endpoints, MongoDB storage, user authentication using
+        JSON Web Tokens, and trip-management functionality.
+      </p>
+
+      <p>
+        Reviewing the existing application helped establish a baseline
+        before making changes and made it easier to identify which
+        parts of the project could demonstrate additional growth.
+      </p>
+    </section>
+
+
+    <section>
+      <h2>Code Analysis</h2>
+
+      <p>
+        The review identified several areas where the original project
+        could be improved. Authentication was present, but the
+        application did not distinguish between standard users and
+        administrators. The trip listing displayed all available data
+        without searching, filtering, or sorting tools. The database
+        also stored users and trips but did not include a reservation
+        system that connected the two.
+      </p>
+
+      <p>
+        These findings became the basis for the three enhancements
+        completed during the capstone.
+      </p>
+    </section>
+
+
+    <section>
+      <h2>Planned Enhancements</h2>
+
+      <div class="card-grid">
+
+        <div class="card">
+          <h3>Software Design & Engineering</h3>
+
+          <p>
+            Improve authentication and authorization by adding user
+            roles, role-based access control, protected API routes,
+            and stronger administrative route protection.
+          </p>
+        </div>
+
+
+        <div class="card">
+          <h3>Algorithms & Data Structures</h3>
+
+          <p>
+            Add searching, filtering, and sorting to the trip listing
+            while evaluating the data structures, algorithms, and
+            trade-offs involved.
+          </p>
+        </div>
+
+
+        <div class="card">
+          <h3>Databases</h3>
+
+          <p>
+            Add a reservation system that connects users and trips
+            while demonstrating database relationships, validation,
+            indexing, and authenticated data access.
+          </p>
+        </div>
+
+      </div>
+    </section>
+
+
+    <section>
+      <h2>Code Review Video</h2>
+
+      <p>
+        The recorded code review walks through the original Travlr
+        Getaways application and explains the areas selected for
+        enhancement.
+      </p>
+
+      <p>
+        <strong>Video link will be added before final submission.</strong>
+      </p>
+
+      <!--
+      Replace the placeholder below with the final hosted video URL.
+
+      Example:
+
+      <a
+        class="button"
+        href="VIDEO_URL"
+        target="_blank"
+        rel="noopener noreferrer">
+        Watch Code Review
+      </a>
+      -->
+
+    </section>
+
+  </main>
+
+
+  <footer>
+    <p>
+      Richard Loumiet | SNHU CS 499 Computer Science Capstone
+    </p>
+  </footer>
+
+</body>
+</html>

@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Algorithms & Data Structures | Richard Loumiet</title>
+
+  <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+
+  <header>
+    <div class="header-content">
+      <h1>Algorithms & Data Structures</h1>
+      <p>Travlr Getaways Enhancement</p>
+    </div>
+  </header>
+
+  <nav>
+    <ul>
+      <li><a href="index.html">Home</a></li>
+      <li><a href="code-review.html">Code Review</a></li>
+      <li>
+        <a href="software-engineering.html">
+          Software Design & Engineering
+        </a>
+      </li>
+      <li>
+        <a href="algorithms.html">
+          Algorithms & Data Structures
+        </a>
+      </li>
+      <li>
+        <a href="databases.html">
+          Databases
+        </a>
+      </li>
+    </ul>
+  </nav>
+
+  <main>
+
+    <section>
+      <h2>Artifact Overview</h2>
+
+      <p>
+        The artifact I selected is the Travlr Getaways full-stack web
+        application that I originally created during CS 465. The
+        original Angular trip listing retrieved the available trips
+        from the API, stored them in a single array, and displayed them
+        in the order returned from the database.
+      </p>
+
+      <p>
+        For the algorithms and data structures enhancement, I added
+        searching, filtering, and sorting so users can work with the
+        trip information more efficiently instead of manually looking
+        through the entire list.
+      </p>
+    </section>
+
+
+    <section>
+      <h2>Enhancement</h2>
+
+      <p>
+        I changed the trip-listing component so the complete trip data
+        is preserved in an <code>allTrips</code> array while a separate
+        <code>trips</code> array contains the results currently being
+        displayed. This prevents searching, filtering, or sorting from
+        destroying or permanently changing the original data.
+      </p>
+
+      <p>
+        The search examines the trip code, name, resort, and
+        description. A resort filter can be combined with the search,
+        and the resulting trips can then be sorted by name, price, or
+        start date in either direction.
+      </p>
+
+      <p>
+        I also used a <code>Set</code> to create a unique list of
+        resorts for the filter control. This avoids duplicate resort
+        names without requiring a second manual duplicate-checking
+        process.
+      </p>
+    </section>
+
+
+    <section>
+      <h2>Algorithms and Data Structures</h2>
+
+      <div class="card-grid">
+
+        <div class="card">
+          <h3>Linear Search and Filtering</h3>
+
+          <p>
+            The application checks each available trip to determine
+            whether it matches the search term and selected resort.
+            Because each trip must be examined, the search and filtering
+            operation has a time complexity of O(n), where n is the
+            number of trips.
+          </p>
+        </div>
+
+
+        <div class="card">
+          <h3>Set for Unique Resorts</h3>
+
+          <p>
+            A Set is used to remove duplicate resort names while the
+            filter list is created. Building the Set requires processing
+            the trip list once, which is approximately O(n), while
+            membership and insertion operations are normally constant
+            time on average.
+          </p>
+        </div>
+
+
+        <div class="card">
+          <h3>Sorting</h3>
+
+          <p>
+            The filtered result set is sorted using comparison
+            functions for names, numeric prices, and dates. For m
+            matching trips, comparison-based sorting is typically
+            approximately O(m log m). The exact internal sorting
+            implementation is handled by the JavaScript runtime.
+          </p>
+        </div>
+
+      </div>
+    </section>
+
+
+    <section>
+      <h2>Design Decisions and Trade-Offs</h2>
+
+      <p>
+        The amount of trip data used by this application is relatively
+        small, so performing the search, filter, and sort operations in
+        the Angular client is a practical solution. Once the trip list
+        has been retrieved, the user can change search terms, filters,
+        and sorting options without sending another request to the
+        database each time.
+      </p>
+
+      <p>
+        The linear search is simple and appropriate for a small data
+        set, but the cost grows directly with the number of trips.
+        Sorting also requires more comparisons as the number of results
+        grows. For a much larger production system, I would consider
+        moving searching and sorting to the API and database, adding
+        pagination, and using database indexes so the browser does not
+        need to load and process the entire data set at once.
+      </p>
+
+      <p>
+        The enhancement also creates copies of the result array before
+        sorting. This uses additional memory, but it prevents the
+        original trip data from being modified and makes it easier to
+        clear the controls and restore the original list.
+      </p>
+    </section>
+
+
+    <section>
+      <h2>Handling Different Data Types</h2>
+
+      <p>
+        One challenge was that the original application stores
+        <code>perPerson</code> as a string. A normal string comparison
+        would not reliably sort prices numerically, so I added a helper
+        method that removes nonnumeric characters and converts the
+        stored price to a number before comparing values.
+      </p>
+
+      <p>
+        Dates are also converted to numeric timestamps before
+        comparison. This allows trips to be ordered correctly from
+        earliest to latest or latest to earliest.
+      </p>
+    </section>
+
+
+    <section>
+      <h2>Testing</h2>
+
+      <p>
+        I tested searching using portions of trip names and resort
+        names, filtering by individual resorts, and combining the search
+        and filter controls. I also tested name sorting in both
+        directions, price sorting from low to high and high to low, and
+        date sorting from earliest to latest and latest to earliest.
+      </p>
+
+      <p>
+        I confirmed that the Clear control restores the full trip list
+        and that the displayed result count changes correctly when the
+        search and filter criteria change.
+      </p>
+    </section>
+
+
+    <section>
+      <h2>Course Outcome Alignment</h2>
+
+      <p>
+        This enhancement demonstrates progress toward Course Outcomes
+        3 and 4. I designed and evaluated computing solutions by
+        selecting data structures and algorithms appropriate for the
+        size and purpose of the application.
+      </p>
+
+      <p>
+        I also evaluated the trade-offs of performing the operations in
+        the Angular client rather than moving them to the database. The
+        current design is simple and responsive for a small data set,
+        while a larger application would benefit from server-side
+        searching, indexing, and pagination.
+      </p>
+    </section>
+
+
+    <section>
+      <h2>Reflection</h2>
+
+      <p>
+        One of the main things I learned from this enhancement was that
+        adding a search box or sorting menu is only the visible part of
+        the work. I also had to decide how the original data would be
+        preserved, how filtered results would be stored, and how the
+        different operations could work together without interfering
+        with each other.
+      </p>
+
+      <p>
+        The enhancement also helped me better understand how algorithm
+        choices affect performance. The solution used here works well
+        for the current application, but the same approach would need
+        to be reconsidered if the number of records became much larger.
+      </p>
+    </section>
+
+
+    <section>
+      <h2>Original and Enhanced Artifact</h2>
+
+      <p>
+        The original artifact shows the trip listing before search,
+        filtering, and sorting were added. The enhanced artifact
+        includes the completed algorithms and data-processing
+        functionality.
+      </p>
+
+      <p>
+        <strong>
+          Artifact links will be added before final submission.
+        </strong>
+      </p>
+
+      <!--
+      Example links to add later:
+
+      <a class="button" href="artifacts/original/...">
+        View Original Artifact
+      </a>
+
+      <a class="button" href="artifacts/enhanced/...">
+        View Enhanced Artifact
+      </a>
+      -->
+
+    </section>
+
+  </main>
+
+
+  <footer>
+    <p>
+      Richard Loumiet | SNHU CS 499 Computer Science Capstone
+    </p>
+  </footer>
+
+</body>
+</html>

@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Software Design & Engineering | Richard Loumiet</title>
+
+  <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+
+  <header>
+    <div class="header-content">
+      <h1>Software Design & Engineering</h1>
+      <p>Travlr Getaways Enhancement</p>
+    </div>
+  </header>
+
+  <nav>
+    <ul>
+      <li><a href="index.html">Home</a></li>
+      <li><a href="code-review.html">Code Review</a></li>
+      <li>
+        <a href="software-engineering.html">
+          Software Design & Engineering
+        </a>
+      </li>
+      <li>
+        <a href="algorithms.html">
+          Algorithms & Data Structures
+        </a>
+      </li>
+      <li>
+        <a href="databases.html">
+          Databases
+        </a>
+      </li>
+    </ul>
+  </nav>
+
+  <main>
+
+    <section>
+      <h2>Artifact Overview</h2>
+
+      <p>
+        The artifact I selected is the Travlr Getaways full-stack web
+        application that I originally created during CS 465. The
+        application uses a customer-facing website, an Angular
+        administrative interface, a REST API, and a MongoDB database.
+      </p>
+
+      <p>
+        For the software design and engineering enhancement, I focused
+        on improving the authentication and authorization system. The
+        original application allowed authenticated users to reach
+        administrative functions without distinguishing between normal
+        users and administrators.
+      </p>
+    </section>
+
+
+    <section>
+      <h2>Enhancement</h2>
+
+      <p>
+        I added user roles to the application and included the role
+        information inside the JSON Web Token. I then added role-based
+        authorization to the API so administrative functions such as
+        adding and editing trips require an administrator role.
+      </p>
+
+      <p>
+        On the Angular side, I created route guards that prevent
+        unauthorized users from manually navigating to administrative
+        pages. I also changed the interface so Add Trip and Edit Trip
+        controls are only displayed to administrators.
+      </p>
+
+      <p>
+        I also improved the login process. The original code started
+        the login request and then used a timed delay before checking
+        whether authentication had completed. I changed this so the
+        component waits for the actual authentication response before
+        continuing.
+      </p>
+    </section>
+
+
+    <section>
+      <h2>Skills Demonstrated</h2>
+
+      <div class="card-grid">
+
+        <div class="card">
+          <h3>Authentication and Authorization</h3>
+
+          <p>
+            The enhancement separates authentication, which determines
+            who a user is, from authorization, which determines what the
+            user is allowed to do.
+          </p>
+        </div>
+
+
+        <div class="card">
+          <h3>Full-Stack Development</h3>
+
+          <p>
+            The enhancement required coordinated changes to the user
+            model, JWT payload, API routes, Angular authentication
+            service, route guards, and user interface.
+          </p>
+        </div>
+
+
+        <div class="card">
+          <h3>Secure API Design</h3>
+
+          <p>
+            Administrative API endpoints are protected on the backend,
+            so security does not depend only on hiding controls in the
+            browser.
+          </p>
+        </div>
+
+      </div>
+    </section>
+
+
+    <section>
+      <h2>Testing and Validation</h2>
+
+      <p>
+        I tested the enhancement using both administrator and standard
+        user accounts. Administrator users could see and use the Add
+        Trip and Edit Trip controls, while standard users could not.
+      </p>
+
+      <p>
+        I also tested direct navigation to protected Angular routes.
+        Standard users were redirected away from administrative pages.
+        To verify that the API itself was protected, I sent a direct
+        request using a standard-user token. The API returned a
+        <code>403 Forbidden</code> response, confirming that the
+        authorization check could not be bypassed through the client
+        interface.
+      </p>
+
+      <p>
+        Finally, I confirmed that an administrator could still edit and
+        save trip information successfully after the security changes.
+      </p>
+    </section>
+
+
+    <section>
+      <h2>Course Outcome Alignment</h2>
+
+      <p>
+        This enhancement demonstrates progress toward Course Outcomes
+        3, 4, and 5. I evaluated the existing application design,
+        selected an appropriate solution for separating authentication
+        and authorization, and implemented the changes across multiple
+        parts of the application.
+      </p>
+
+      <p>
+        The enhancement also demonstrates a security mindset by
+        protecting administrative resources at both the interface and
+        API levels instead of relying on client-side controls alone.
+      </p>
+    </section>
+
+
+    <section>
+      <h2>Reflection</h2>
+
+      <p>
+        One of the most important things I learned from this enhancement
+        was the difference between proving who a user is and deciding
+        what that user is allowed to do. The original project already
+        used JWT authentication, but it did not separate standard users
+        from administrators.
+      </p>
+
+      <p>
+        I also learned that authentication changes affect several layers
+        of a full-stack application. The user model, token, API,
+        Angular service, routing, and interface all had to agree on how
+        the user's role was handled.
+      </p>
+    </section>
+
+
+    <section>
+      <h2>Original and Enhanced Artifact</h2>
+
+      <p>
+        The original artifact shows the application before the
+        role-based access-control enhancement. The enhanced artifact
+        includes the completed security and authorization changes.
+      </p>
+
+      <p>
+        <strong>
+          Artifact links will be added before final submission.
+        </strong>
+      </p>
+
+      <!--
+      Example links to add later:
+
+      <a class="button" href="artifacts/original/...">
+        View Original Artifact
+      </a>
+
+      <a class="button" href="artifacts/enhanced/...">
+        View Enhanced Artifact
+      </a>
+      -->
+
+    </section>
+
+  </main>
+
+
+  <footer>
+    <p>
+      Richard Loumiet | SNHU CS 499 Computer Science Capstone
+    </p>
+  </footer>
+
+</body>
+</html>
