@@ -46,20 +46,32 @@
       <h2>Professional Self-Assessment</h2>
 
       <p>
-        This ePortfolio represents the work I completed during the
-        Computer Science program and the enhancements I made during
-        CS 499. My professional interests remain focused on information
-        technology and cybersecurity, while my coursework has expanded
-        my experience with software development, APIs, databases,
-        algorithms, full-stack applications, and secure system design.
+        Completing the Computer Science program has given me a much better understanding of how software is built and how all of the different parts work together. I already had a background in IT and cybersecurity before starting this program, so I was not coming into it without technical experience. What I gained from the program was a much stronger understanding of software development from the developer's side. I now have a better understanding of how applications are designed, how the frontend and backend communicate, how databases are used, and how security needs to be considered throughout the entire process.
       </p>
 
       <p>
-        The professional self-assessment for this portfolio will provide
-        a complete reflection on my growth throughout the program,
-        professional goals, technical strengths, communication,
-        collaboration, security, software engineering, algorithms,
-        and database development.
+        One of the bigger things I learned is that a change to one part of an application usually affects several other parts. Something that looks simple from the outside may require changes to the user interface, application logic, API, database, and security. The Travlr Getaways project is a good example of this. I used the same application for all three of my capstone enhancements, but each enhancement focused on a different area. Even though they were separate assignments, all of the changes still had to work together as part of the same application.
+      </p>
+      <p>
+        Communication has also been an important part of the program. Being able to write code is important, but it is also important to be able to explain what the code is doing, why a certain design was chosen, and what problems the design is trying to solve. The code review and the enhancement narratives in this portfolio gave me a chance to do that. I had to review my own work, explain the problems I saw, describe the changes I planned to make, and then explain whether those changes worked the way I expected.
+      </p>
+      <p>
+        The Algorithms and Data Structures enhancement focused on adding search, filtering, and sorting to the administrative side of the Travlr application. The search and filtering operations work through the list of trips and have O(n) complexity. Sorting the filtered results is generally around O(m log m), where m is the number of results being sorted. For the size of this application, doing that work in the browser makes sense. If the application became much larger, I would move more of that work to the server and database and use things such as pagination and database indexes. One of the things I have learned is that the best solution is not always the most complicated solution. The solution needs to make sense for the size and needs of the application.
+      </p>
+      <p>
+        The Software Design and Engineering enhancement focused mainly on authentication, authorization, and security. The original application could authenticate a user, but it did not properly separate a normal user from an administrator. I added user roles, included the role in the JWT, protected the administrative API routes, and added Angular route guards. I also changed the interface so normal users do not see controls that they are not allowed to use. More importantly, I did not rely only on hiding buttons in the interface. The API itself checks the user's role, which means a normal user cannot bypass the interface and directly call an administrative endpoint.
+      </p>
+      <p>
+        That part of the project also fits very closely with my background in cybersecurity. Security needs to be built into the application and not treated as something that gets added later. I tested the API directly with a normal user's token and confirmed that the server returned a 403 response when that user attempted an administrative operation. That was important because it proved the security existed on the server and was not just something being enforced by the browser.
+      </p>
+      <p>
+        The Database enhancement added a reservation system to the application. I created a new MongoDB and Mongoose reservation model that connects reservations to users and trips using ObjectIds. I added validation for things such as guest count and reservation status, added indexes for the types of queries the application would use, and created authenticated API routes for creating and retrieving reservations. I also connected that functionality to the Angular application so a logged-in user could reserve a trip and view their reservations. This enhancement helped show how database design, API design, security, and the user interface all depend on each other.
+      </p>
+      <p>
+        My overall career direction has not really changed because of this degree. I still plan to continue working in IT and cybersecurity. What has changed is the number of tools and skills I can bring into that work. I have a much better understanding of software architecture, programming, databases, APIs, algorithms, and the development process than I did before completing the program. That knowledge also helps me understand software security better because I can look at an application from both the infrastructure side and the development side.
+      </p>
+      <p>
+        The Travlr Getaways project was a good artifact to use for this portfolio because it gave me something real that I could go back to and improve. The original application worked, but after gaining more experience I could see areas where the design could be better. The capstone gave me the opportunity to improve its security, add better searching and sorting, and expand the database with a reservation system. More than anything, the project shows that I can look at an existing system, figure out where it can be improved, make those changes, test them, and explain why I made the decisions I did.
       </p>
     </section>
 
