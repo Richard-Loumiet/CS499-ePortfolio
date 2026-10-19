@@ -22,16 +22,19 @@
     <ul>
       <li><a href="index.html">Home</a></li>
       <li><a href="code-review.html">Code Review</a></li>
+
       <li>
         <a href="software-engineering.html">
           Software Design & Engineering
         </a>
       </li>
+
       <li>
         <a href="algorithms.html">
           Algorithms & Data Structures
         </a>
       </li>
+
       <li>
         <a href="databases.html">
           Databases
@@ -52,27 +55,39 @@
       <p>
         One of the bigger things I learned is that a change to one part of an application usually affects several other parts. Something that looks simple from the outside may require changes to the user interface, application logic, API, database, and security. The Travlr Getaways project is a good example of this. I used the same application for all three of my capstone enhancements, but each enhancement focused on a different area. Even though they were separate assignments, all of the changes still had to work together as part of the same application.
       </p>
+
       <p>
         Communication has also been an important part of the program. Being able to write code is important, but it is also important to be able to explain what the code is doing, why a certain design was chosen, and what problems the design is trying to solve. The code review and the enhancement narratives in this portfolio gave me a chance to do that. I had to review my own work, explain the problems I saw, describe the changes I planned to make, and then explain whether those changes worked the way I expected.
       </p>
+
+      <p>
+        In my professional work, I also have to communicate technical information to people with very different levels of technical knowledge. For example, I once worked with a client whose device could not communicate on the network. I asked them to power-cycle the device so its network information could be rebuilt, and they asked why that would help. Instead of explaining the ARP cache using networking terminology, I compared the IP address to a house address and the ARP table to a local directory that helps identify which physical device belongs to that address. That made the concept easier for the client to understand. Experiences like this have taught me that good technical communication is not just about knowing the answer. It is also about explaining it in a way that makes sense to the person I am working with.
+      </p>
+
       <p>
         The Algorithms and Data Structures enhancement focused on adding search, filtering, and sorting to the administrative side of the Travlr application. The search and filtering operations work through the list of trips and have O(n) complexity. Sorting the filtered results is generally around O(m log m), where m is the number of results being sorted. For the size of this application, doing that work in the browser makes sense. If the application became much larger, I would move more of that work to the server and database and use things such as pagination and database indexes. One of the things I have learned is that the best solution is not always the most complicated solution. The solution needs to make sense for the size and needs of the application.
       </p>
+
       <p>
         The Software Design and Engineering enhancement focused mainly on authentication, authorization, and security. The original application could authenticate a user, but it did not properly separate a normal user from an administrator. I added user roles, included the role in the JWT, protected the administrative API routes, and added Angular route guards. I also changed the interface so normal users do not see controls that they are not allowed to use. More importantly, I did not rely only on hiding buttons in the interface. The API itself checks the user's role, which means a normal user cannot bypass the interface and directly call an administrative endpoint.
       </p>
+
       <p>
         That part of the project also fits very closely with my background in cybersecurity. Security needs to be built into the application and not treated as something that gets added later. I tested the API directly with a normal user's token and confirmed that the server returned a 403 response when that user attempted an administrative operation. That was important because it proved the security existed on the server and was not just something being enforced by the browser.
       </p>
+
       <p>
         The Database enhancement added a reservation system to the application. I created a new MongoDB and Mongoose reservation model that connects reservations to users and trips using ObjectIds. I added validation for things such as guest count and reservation status, added indexes for the types of queries the application would use, and created authenticated API routes for creating and retrieving reservations. I also connected that functionality to the Angular application so a logged-in user could reserve a trip and view their reservations. This enhancement helped show how database design, API design, security, and the user interface all depend on each other.
       </p>
+
       <p>
         My overall career direction has not really changed because of this degree. I still plan to continue working in IT and cybersecurity. What has changed is the number of tools and skills I can bring into that work. I have a much better understanding of software architecture, programming, databases, APIs, algorithms, and the development process than I did before completing the program. That knowledge also helps me understand software security better because I can look at an application from both the infrastructure side and the development side.
       </p>
+
       <p>
         The Travlr Getaways project was a good artifact to use for this portfolio because it gave me something real that I could go back to and improve. The original application worked, but after gaining more experience I could see areas where the design could be better. The capstone gave me the opportunity to improve its security, add better searching and sorting, and expand the database with a reservation system. More than anything, the project shows that I can look at an existing system, figure out where it can be improved, make those changes, test them, and explain why I made the decisions I did.
       </p>
+
     </section>
 
 
@@ -80,11 +95,7 @@
       <h2>Featured Artifact: Travlr Getaways</h2>
 
       <p>
-        Travlr Getaways is a full-stack web application originally
-        created during CS 465. I selected the project as the primary
-        artifact for my CS 499 capstone because it provided opportunities
-        to demonstrate growth across all three required enhancement
-        categories.
+        Travlr Getaways is a full-stack web application originally created during CS 465. I selected the project as the primary artifact for my CS 499 capstone because it provided opportunities to demonstrate growth across all three required enhancement categories.
       </p>
 
       <div class="card-grid">
@@ -93,9 +104,7 @@
           <h3>Software Design & Engineering</h3>
 
           <p>
-            Authentication and authorization improvements including
-            role-based access control, JWT role information, protected
-            API routes, Angular route guards, and improved login handling.
+            Authentication and authorization improvements including role-based access control, JWT role information, protected API routes, Angular route guards, and improved login handling.
           </p>
 
           <a
@@ -110,9 +119,7 @@
           <h3>Algorithms & Data Structures</h3>
 
           <p>
-            Search, filtering, and sorting functionality added to the
-            trip-management interface using arrays, a Set, comparison
-            operations, and data-processing logic.
+            Search, filtering, and sorting functionality added to the trip-management interface using arrays, a Set, comparison operations, and data-processing logic.
           </p>
 
           <a
@@ -127,9 +134,7 @@
           <h3>Databases</h3>
 
           <p>
-            A reservation system was added using MongoDB and Mongoose,
-            including user and trip relationships, validation, indexing,
-            authenticated access, and reservation retrieval.
+            A reservation system was added using MongoDB and Mongoose, including user and trip relationships, validation, indexing, authenticated access, and reservation retrieval.
           </p>
 
           <a
@@ -147,11 +152,7 @@
       <h2>Code Review</h2>
 
       <p>
-        Before completing the enhancements, I performed a code review
-        of the original Travlr Getaways application. The review examined
-        the existing application structure, identified areas for
-        improvement, and explained the planned enhancements in software
-        engineering, algorithms and data structures, and databases.
+        Before completing the enhancements, I performed a code review of the original Travlr Getaways application. The review examined the existing application structure, identified areas for improvement, and explained the planned enhancements in software engineering, algorithms and data structures, and databases.
       </p>
 
       <a
@@ -159,6 +160,7 @@
         href="code-review.html">
         View Code Review
       </a>
+
     </section>
 
   </main>
