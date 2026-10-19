@@ -54,18 +54,11 @@
       <h2>Artifact Overview</h2>
 
       <p>
-        The artifact I selected is the Travlr Getaways full-stack web
-        application that I originally created during CS 465. The
-        application uses a customer-facing website, an Angular
-        administrative interface, a REST API, and a MongoDB database.
+        The artifact I selected is the Travlr Getaways full-stack web application that I originally created during CS 465. The application uses a customer-facing website, an Angular administrative interface, a REST API, and a MongoDB database.
       </p>
 
       <p>
-        For the software design and engineering enhancement, I focused
-        on improving the authentication and authorization system. The
-        original application allowed authenticated users to reach
-        administrative functions without distinguishing between normal
-        users and administrators.
+        For the software design and engineering enhancement, I focused on improving the authentication and authorization system. The original application allowed authenticated users to reach administrative functions without distinguishing between normal users and administrators.
       </p>
     </section>
 
@@ -74,25 +67,15 @@
       <h2>Enhancement</h2>
 
       <p>
-        I added user roles to the application and included the role
-        information inside the JSON Web Token. I then added role-based
-        authorization to the API so administrative functions such as
-        adding and editing trips require an administrator role.
+        I added user roles to the application and included the role information inside the JSON Web Token. I then added role-based authorization to the API so administrative functions such as adding and editing trips require an administrator role.
       </p>
 
       <p>
-        On the Angular side, I created route guards that prevent
-        unauthorized users from manually navigating to administrative
-        pages. I also changed the interface so Add Trip and Edit Trip
-        controls are only displayed to administrators.
+        On the Angular side, I created route guards that prevent unauthorized users from manually navigating to administrative pages. I also changed the interface so Add Trip and Edit Trip controls are only displayed to administrators.
       </p>
 
       <p>
-        I also improved the login process. The original code started
-        the login request and then used a timed delay before checking
-        whether authentication had completed. I changed this so the
-        component waits for the actual authentication response before
-        continuing.
+        I also improved the login process. The original code started the login request and then used a timed delay before checking whether authentication had completed. I changed this so the component waits for the actual authentication response before continuing.
       </p>
     </section>
 
@@ -106,9 +89,7 @@
           <h3>Authentication and Authorization</h3>
 
           <p>
-            The enhancement separates authentication, which determines
-            who a user is, from authorization, which determines what
-            the user is allowed to do.
+            The enhancement separates authentication, which determines who a user is, from authorization, which determines what the user is allowed to do.
           </p>
         </div>
 
@@ -117,9 +98,7 @@
           <h3>Full-Stack Development</h3>
 
           <p>
-            The enhancement required coordinated changes to the user
-            model, JWT payload, API routes, Angular authentication
-            service, route guards, and user interface.
+            The enhancement required coordinated changes to the user model, JWT payload, API routes, Angular authentication service, route guards, and user interface.
           </p>
         </div>
 
@@ -128,9 +107,7 @@
           <h3>Secure API Design</h3>
 
           <p>
-            Administrative API endpoints are protected on the backend,
-            so security does not depend only on hiding controls in the
-            browser.
+            Administrative API endpoints are protected on the backend, so security does not depend only on hiding controls in the browser.
           </p>
         </div>
 
@@ -142,24 +119,15 @@
       <h2>Testing and Validation</h2>
 
       <p>
-        I tested the enhancement using both administrator and standard
-        user accounts. Administrator users could see and use the Add
-        Trip and Edit Trip controls, while standard users could not.
+        I tested the enhancement using both administrator and standard user accounts. Administrator users could see and use the Add Trip and Edit Trip controls, while standard users could not.
       </p>
 
       <p>
-        I also tested direct navigation to protected Angular routes.
-        Standard users were redirected away from administrative pages.
-        To verify that the API itself was protected, I sent a direct
-        request using a standard-user token. The API returned a
-        <code>403 Forbidden</code> response, confirming that the
-        authorization check could not be bypassed through the client
-        interface.
+        I also tested direct navigation to protected Angular routes. Standard users were redirected away from administrative pages. To verify that the API itself was protected, I sent a direct request using a standard-user token. The API returned a <code>403 Forbidden</code> response, confirming that the authorization check could not be bypassed through the client interface.
       </p>
 
       <p>
-        Finally, I confirmed that an administrator could still edit and
-        save trip information successfully after the security changes.
+        Finally, I confirmed that an administrator could still edit and save trip information successfully after the security changes.
       </p>
     </section>
 
@@ -168,17 +136,11 @@
       <h2>Course Outcome Alignment</h2>
 
       <p>
-        This enhancement demonstrates progress toward Course Outcomes
-        3, 4, and 5. I evaluated the existing application design,
-        selected an appropriate solution for separating authentication
-        and authorization, and implemented the changes across multiple
-        parts of the application.
+        This enhancement demonstrates progress toward Course Outcomes 3, 4, and 5. I evaluated the existing application design, selected an appropriate solution for separating authentication and authorization, and implemented the changes across multiple parts of the application.
       </p>
 
       <p>
-        The enhancement also demonstrates a security mindset by
-        protecting administrative resources at both the interface and
-        API levels instead of relying on client-side controls alone.
+        The enhancement also demonstrates a security mindset by protecting administrative resources at both the interface and API levels instead of relying on client-side controls alone.
       </p>
     </section>
 
@@ -187,18 +149,11 @@
       <h2>Reflection</h2>
 
       <p>
-        One of the most important things I learned from this enhancement
-        was the difference between proving who a user is and deciding
-        what that user is allowed to do. The original project already
-        used JWT authentication, but it did not separate standard users
-        from administrators.
+        One of the most important things I learned from this enhancement was the difference between proving who a user is and deciding what that user is allowed to do. The original project already used JWT authentication, but it did not separate standard users from administrators.
       </p>
 
       <p>
-        I also learned that authentication changes affect several layers
-        of a full-stack application. The user model, token, API,
-        Angular service, routing, and interface all had to agree on how
-        the user's role was handled.
+        I also learned that authentication changes affect several layers of a full-stack application. The user model, token, API, Angular service, routing, and interface all had to agree on how the user's role was handled.
       </p>
     </section>
 
@@ -207,9 +162,7 @@
       <h2>Original and Enhanced Artifact</h2>
 
       <p>
-        The original artifact shows the application before the
-        role-based access-control enhancement. The enhanced artifact
-        includes the completed security and authorization changes.
+        The original artifact shows the application before the role-based access-control enhancement. The enhanced artifact includes the completed security and authorization changes.
       </p>
 
       <div class="card-grid">
@@ -218,8 +171,7 @@
           <h3>Original Artifact</h3>
 
           <p>
-            Source code before the Software Design and Engineering
-            enhancement.
+            Source code before the Software Design and Engineering enhancement.
           </p>
 
           <a
@@ -234,8 +186,7 @@
           <h3>Enhanced Artifact</h3>
 
           <p>
-            Source code after the role-based access-control and
-            authentication improvements were completed.
+            Source code after the role-based access-control and authentication improvements were completed.
           </p>
 
           <a
@@ -250,8 +201,7 @@
           <h3>Enhancement Narrative</h3>
 
           <p>
-            Written narrative describing the enhancement, course
-            outcomes, technical decisions, and reflection.
+            Written narrative describing the enhancement, course outcomes, technical decisions, and reflection.
           </p>
 
           <a

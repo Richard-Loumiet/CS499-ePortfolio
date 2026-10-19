@@ -46,18 +46,11 @@
       <h2>Artifact Overview</h2>
 
       <p>
-        The artifact I selected is the Travlr Getaways full-stack web
-        application that I originally created during CS 465. The
-        original application stored users and trips in MongoDB, but it
-        did not include a way to connect a user to a trip through an
-        actual reservation record.
+        The artifact I selected is the Travlr Getaways full-stack web application that I originally created during CS 465. The original application stored users and trips in MongoDB, but it did not include a way to connect a user to a trip through an actual reservation record.
       </p>
 
       <p>
-        For the database enhancement, I added a reservation system that
-        connects authenticated users with existing trips while storing
-        reservation-specific information such as the number of guests,
-        reservation status, and creation date.
+        For the database enhancement, I added a reservation system that connects authenticated users with existing trips while storing reservation-specific information such as the number of guests, reservation status, and creation date.
       </p>
     </section>
 
@@ -66,18 +59,11 @@
       <h2>Reservation Data Model</h2>
 
       <p>
-        I created a new Mongoose reservation schema rather than adding
-        reservation information directly to the existing user or trip
-        documents. Each reservation stores references to both the user
-        and the selected trip using MongoDB ObjectIds.
+        I created a new Mongoose reservation schema rather than adding reservation information directly to the existing user or trip documents. Each reservation stores references to both the user and the selected trip using MongoDB ObjectIds.
       </p>
 
       <p>
-        This design avoids unnecessarily duplicating user and trip
-        information inside every reservation. The reservation document
-        stores only the information that belongs to the reservation,
-        while related user and trip information can be retrieved when
-        needed.
+        This design avoids unnecessarily duplicating user and trip information inside every reservation. The reservation document stores only the information that belongs to the reservation, while related user and trip information can be retrieved when needed.
       </p>
 
       <div class="card-grid">
@@ -86,8 +72,7 @@
           <h3>User Relationship</h3>
 
           <p>
-            The <code>user</code> field stores an ObjectId reference to
-            the authenticated user who created the reservation.
+            The <code>user</code> field stores an ObjectId reference to the authenticated user who created the reservation.
           </p>
         </div>
 
@@ -95,8 +80,7 @@
           <h3>Trip Relationship</h3>
 
           <p>
-            The <code>trip</code> field stores an ObjectId reference to
-            the existing trip document selected by the user.
+            The <code>trip</code> field stores an ObjectId reference to the existing trip document selected by the user.
           </p>
         </div>
 
@@ -104,8 +88,7 @@
           <h3>Reservation Data</h3>
 
           <p>
-            Each reservation also stores the guest count, reservation
-            status, creation timestamp, and update timestamp.
+            Each reservation also stores the guest count, reservation status, creation timestamp, and update timestamp.
           </p>
         </div>
 
@@ -117,23 +100,15 @@
       <h2>Validation and Data Integrity</h2>
 
       <p>
-        Database-level validation was added to prevent invalid
-        reservation records from being stored. The
-        <code>guestCount</code> field is required and must contain a
-        value of at least one.
+        Database-level validation was added to prevent invalid reservation records from being stored. The <code>guestCount</code> field is required and must contain a value of at least one.
       </p>
 
       <p>
-        The reservation status is also restricted to approved values:
-        <code>pending</code>, <code>confirmed</code>, or
-        <code>cancelled</code>. New reservations begin with a default
-        status of <code>pending</code>.
+        The reservation status is also restricted to approved values: <code>pending</code>, <code>confirmed</code>, or <code>cancelled</code>. New reservations begin with a default status of <code>pending</code>.
       </p>
 
       <p>
-        Validation in the database model is important because client-side
-        validation can be bypassed. Even if an invalid request is sent
-        directly to the API, the model still protects the stored data.
+        Validation in the database model is important because client-side validation can be bypassed. Even if an invalid request is sent directly to the API, the model still protects the stored data.
       </p>
     </section>
 
@@ -142,18 +117,11 @@
       <h2>Indexing and Query Design</h2>
 
       <p>
-        I added indexes to fields that are commonly used when retrieving
-        reservation information. The user and trip references are
-        indexed, along with compound indexes supporting lookups by user
-        and creation date and by trip and reservation status.
+        I added indexes to fields that are commonly used when retrieving reservation information. The user and trip references are indexed, along with compound indexes supporting lookups by user and creation date and by trip and reservation status.
       </p>
 
       <p>
-        These indexes improve the database design by supporting the
-        queries the application is most likely to perform. For example,
-        the application retrieves reservations belonging to the
-        currently authenticated user and sorts them with the newest
-        reservations first.
+        These indexes improve the database design by supporting the queries the application is most likely to perform. For example, the application retrieves reservations belonging to the currently authenticated user and sorts them with the newest reservations first.
       </p>
     </section>
 
@@ -162,22 +130,15 @@
       <h2>API and Database Integration</h2>
 
       <p>
-        I created REST API endpoints that allow an authenticated user
-        to create a reservation and retrieve their existing
-        reservations.
+        I created REST API endpoints that allow an authenticated user to create a reservation and retrieve their existing reservations.
       </p>
 
       <p>
-        When a reservation is created, the API first finds the selected
-        trip by its trip code. It then stores the trip's MongoDB ObjectId
-        together with the ObjectId from the authenticated user's JWT.
+        When a reservation is created, the API first finds the selected trip by its trip code. It then stores the trip's MongoDB ObjectId together with the ObjectId from the authenticated user's JWT.
       </p>
 
       <p>
-        When reservation information is returned, Mongoose
-        <code>populate()</code> is used to retrieve useful information
-        from the related trip and user documents without duplicating
-        that information in the reservation collection.
+        When reservation information is returned, Mongoose <code>populate()</code> is used to retrieve useful information from the related trip and user documents without duplicating that information in the reservation collection.
       </p>
     </section>
 
@@ -186,16 +147,11 @@
       <h2>Authentication and Security</h2>
 
       <p>
-        Reservation routes require a valid JWT. The user identifier used
-        for creating and retrieving reservations comes from the verified
-        token rather than from a user ID supplied by the browser.
+        Reservation routes require a valid JWT. The user identifier used for creating and retrieving reservations comes from the verified token rather than from a user ID supplied by the browser.
       </p>
 
       <p>
-        When a user requests their reservations, the API queries the
-        database using the authenticated user's ObjectId. This prevents
-        the client from simply supplying another user's identifier and
-        requesting that person's reservation data.
+        When a user requests their reservations, the API queries the database using the authenticated user's ObjectId. This prevents the client from simply supplying another user's identifier and requesting that person's reservation data.
       </p>
     </section>
 
@@ -204,17 +160,11 @@
       <h2>Angular Integration</h2>
 
       <p>
-        The Angular application was updated so logged-in users can create
-        reservations directly from the trip cards. The user selects the
-        number of guests, and the application sends the trip code and
-        guest count to the reservation API.
+        The Angular application was updated so logged-in users can create reservations directly from the trip cards. The user selects the number of guests, and the application sends the trip code and guest count to the reservation API.
       </p>
 
       <p>
-        I also added a My Reservations page that retrieves the logged-in
-        user's reservation records and displays the trip name, resort,
-        start date, guest count, price per person, reservation status,
-        and the date the reservation was created.
+        I also added a My Reservations page that retrieves the logged-in user's reservation records and displays the trip name, resort, start date, guest count, price per person, reservation status, and the date the reservation was created.
       </p>
     </section>
 
@@ -223,26 +173,15 @@
       <h2>Testing and Validation</h2>
 
       <p>
-        I tested reservation creation directly through the API and
-        through the Angular interface. I confirmed that reservations
-        were stored in MongoDB with the correct user and trip ObjectId
-        relationships and that related trip information was returned
-        correctly through <code>populate()</code>.
+        I tested reservation creation directly through the API and through the Angular interface. I confirmed that reservations were stored in MongoDB with the correct user and trip ObjectId relationships and that related trip information was returned correctly through <code>populate()</code>.
       </p>
 
       <p>
-        I also verified the stored documents directly in MongoDB Compass
-        and confirmed that reservations were returned in newest-first
-        order.
+        I also verified the stored documents directly in MongoDB Compass and confirmed that reservations were returned in newest-first order.
       </p>
 
       <p>
-        To test database validation independently of the user interface,
-        I deliberately sent a reservation request with a guest count of
-        <code>-1</code> directly to the API. Mongoose rejected the
-        request with an HTTP <code>400 Bad Request</code> response
-        because the value violated the schema's minimum requirement.
-        No invalid reservation was added to the database.
+        To test database validation independently of the user interface, I deliberately sent a reservation request with a guest count of <code>-1</code> directly to the API. Mongoose rejected the request with an HTTP <code>400 Bad Request</code> response because the value violated the schema's minimum requirement. No invalid reservation was added to the database.
       </p>
     </section>
 
@@ -251,18 +190,11 @@
       <h2>Course Outcome Alignment</h2>
 
       <p>
-        This enhancement demonstrates progress toward Course Outcomes
-        3, 4, and 5. The reservation system required decisions about
-        data relationships, validation, indexing, query design, and how
-        information should move between the database, API, and Angular
-        application.
+        This enhancement demonstrates progress toward Course Outcomes 3, 4, and 5. The reservation system required decisions about data relationships, validation, indexing, query design, and how information should move between the database, API, and Angular application.
       </p>
 
       <p>
-        The enhancement also demonstrates a security mindset because
-        reservation records are accessed through authenticated API
-        requests and database queries are tied to the identity contained
-        in the verified JWT.
+        The enhancement also demonstrates a security mindset because reservation records are accessed through authenticated API requests and database queries are tied to the identity contained in the verified JWT.
       </p>
     </section>
 
@@ -271,17 +203,11 @@
       <h2>Reflection</h2>
 
       <p>
-        One of the main things I learned from this enhancement was how
-        strongly database design affects the rest of a full-stack
-        application. Adding reservations required coordinated changes
-        to the database model, API controller, routes, Angular service,
-        route protection, and user interface.
+        One of the main things I learned from this enhancement was how strongly database design affects the rest of a full-stack application. Adding reservations required coordinated changes to the database model, API controller, routes, Angular service, route protection, and user interface.
       </p>
 
       <p>
-        Testing the validation directly through the API also reinforced
-        the importance of protecting data at the model level instead of
-        depending only on controls in the browser.
+        Testing the validation directly through the API also reinforced the importance of protecting data at the model level instead of depending only on controls in the browser.
       </p>
     </section>
 
@@ -290,10 +216,7 @@
       <h2>Original and Enhanced Artifact</h2>
         
       <p>
-        The original artifact shows the application before the reservation
-        database functionality was added. The enhanced artifact includes
-        the completed MongoDB reservation model, validation, indexing,
-        authenticated API queries, and Angular integration.
+        The original artifact shows the application before the reservation database functionality was added. The enhanced artifact includes the completed MongoDB reservation model, validation, indexing, authenticated API queries, and Angular integration.
       </p>
     
       <div class="card-grid">
@@ -316,8 +239,7 @@
           <h3>Enhanced Artifact</h3>
         
           <p>
-            Source code after the reservation database, API, validation,
-            indexing, and user reservation functionality were completed.
+            Source code after the reservation database, API, validation, indexing, and user reservation functionality were completed.
           </p>
         
           <a
@@ -331,8 +253,7 @@
           <h3>Enhancement Narrative</h3>
         
           <p>
-            Written narrative describing the database enhancement,
-            technical decisions, course outcomes, testing, and reflection.
+            Written narrative describing the database enhancement, technical decisions, course outcomes, testing, and reflection.
           </p>
         
           <a
